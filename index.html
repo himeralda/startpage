@@ -1,27 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>~/startpage</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-</head>
+    <style>
+        /* Optional: Add some basic styling if style.css doesn't cover these */
+        .head {
+            /* If you want to ensure the font size for both the clock and the prompt */
+            font-size: 1.2em; /* Example: Adjust this value as needed */
+            color: #EADBB2; /* Example: Apply text color consistently */
+        }
 
+        .head #current-time {
+            margin-bottom: 5px; /* Add some space between the clock and the prompt */
+            /* No need for font-size here as it inherits from .head */
+        }
+
+        .head p {
+            margin-top: 0; /* Remove default paragraph top margin to prevent extra space */
+            margin-bottom: 0; /* Remove default paragraph bottom margin */
+        }
+
+        /* Blinking cursor style (if not in style.css) */
+        .blinking {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to {
+                color: transparent;
+            }
+            50% {
+                color: #EADBB2; /* Or whatever color your text is */
+            }
+        }
+    </style>
+</head>
 <body>
     <div class="container">
         <div class="left-container">
             <div class="gif">
-                <img src="cat.gif" />
+                <img src="cat.gif" alt="Cat GIF" />
             </div>
         </div>
-
         <div class="right-container">
-            <!-- Clock added here -->
-            <div id="current-time" style="font-size: 1.2em; margin-bottom: 10px; color: #EADBB2;"></div>
             <div class="head">
+                <div id="current-time"></div>
                 <p>> cd ~/<span class="blinking">_</span></p>
             </div>
-
             <div class="bookmarks">
                 <div class="category">
                     <div class="links">
@@ -32,7 +59,6 @@
                         <li><a href="https://vim.rtorr.com/">vim</a></li>
                     </div>
                 </div>
-
                 <div class="category">
                     <div class="links">
                         <li class="title">dev</li>
@@ -42,7 +68,6 @@
                         <li><a href="https://devdocs.io/">devdocs</a></li>
                     </div>
                 </div>
-
                 <div class="category">
                     <div class="links">
                         <li class="title"><a style="color: #EADBB2" href="https://reddit.com">reddit</a></li>
@@ -52,7 +77,6 @@
                         <li><a href="https://4chan.org/">4chan</a></li>
                     </div>
                 </div>
-
                 <div class="category">
                     <div class="links">
                         <li class="title">play</li>
@@ -62,8 +86,6 @@
                         <li><a href="https://netflix.com/">netflix</a></li>
                     </div>
                 </div>
-
-                <!-- New category: News -->
                 <div class="category">
                     <div class="links">
                         <li class="title">news</li>
@@ -72,8 +94,6 @@
                         <li><a href="https://www.theguardian.com/">the guardian</a></li>
                     </div>
                 </div>
-
-                <!-- New category: Social -->
                 <div class="category">
                     <div class="links">
                         <li class="title">social</li>
@@ -85,15 +105,22 @@
             </div>
         </div>
     </div>
-
     <script>
-        // Function to update the clock
+        // Function to update the clock to 12-hour format with AM/PM
         function updateClock() {
             const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
+            let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timeString = `${hours}:${minutes}:${seconds}`;
+
+            const ampm = hours >= 12 ? 'PM' : 'AM'; // Determine AM/PM
+
+            hours = hours % 12; // Convert to 12-hour format
+            hours = hours ? hours : 12; // The hour '0' should be '12'
+
+            const displayHours = String(hours).padStart(2, '0'); // Pad with leading zero if needed
+
+            const timeString = `${displayHours}:${minutes}:${seconds} ${ampm}`;
             document.getElementById('current-time').textContent = timeString;
         }
 
@@ -104,5 +131,4 @@
         updateClock();
     </script>
 </body>
-
 </html>
