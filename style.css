@@ -14,70 +14,123 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: auto; /* Allow horizontal scrolling */
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none;
 }
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 460px 600px 1fr;
+  grid-template-columns: 1fr minmax(300px, 450px) minmax(700px, 1fr) 1fr;
   grid-template-areas:
     ". left right .";
-  column-gap: 80px;
+  column-gap: 40px;
   justify-items: center;
   align-items: center;
   min-height: 100%;
+  width: 100%;
 }
 
 .left-container {
   grid-area: left;
   aspect-ratio: 1/1;
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .right-container {
   grid-area: right;
   height: 50%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center all children horizontally */
+  justify-content: center;
+  padding-right: 0px; /* Removed as items are centered */
+}
+
+.datetime-container {
+    font-size: 1.4em;
+    color: var(--color-fg);
+    margin-bottom: 20px; /* Space between clock and cd ~/_ */
+    text-align: center; /* Center text within its own container */
+    width: 100%; /* Take full width to allow centering */
+    box-sizing: border-box;
 }
 
 .gif img {
   max-width: 100%;
-  max-height: 100%;
+  height: auto;
 }
 
 .head {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  font-size: 40px;
-  padding-top: 60px;
-}
-
-.category {
-  display: flex;
-  flex-direction: column;
-  width: 180px;
+  align-items: center; /* Center the cd ~/_ text */
+  font-size: 32px;
+  padding-top: 0px;
+  margin-top: 0px;
+  white-space: nowrap;
 }
 
 .bookmarks {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Center categories horizontally */
+  align-items: flex-start; /* Align category items to the top */
+  gap: 10px; /* Gap between categories */
+  white-space: nowrap;
+  width: 100%;
+  overflow-x: auto; /* Allow horizontal scrolling for bookmarks if they overflow */
+  box-sizing: border-box;
+  margin-top: 40px; /* More space below cd ~/_ */
+  /* Hide scrollbar for Chrome, Safari and Opera within bookmarks */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera within bookmarks */
+.bookmarks::-webkit-scrollbar {
+  display: none;
+}
+
+
+.category {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto; /* Allow categories to grow and shrink, with a flexible basis */
+  min-width: 90px; /* Adjusted minimum width for categories */
+  max-width: 160px; /* Adjusted maximum width for categories */
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .links {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
 }
 
 .title {
   font-size: 20px;
+  margin-bottom: 5px;
 }
 
 li {
   font-size: 16px;
   list-style-type: none;
-  padding: 5px
+  padding: 3px;
 }
 
 a:link {
