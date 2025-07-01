@@ -16,8 +16,9 @@
         </div>
 
         <div class="right-container">
-            <!-- Clock added here -->
-            <div id="current-time" style="font-size: 1.2em; margin-bottom: 10px; color: #EADBB2;"></div>
+            <div class="datetime-container">
+                <div id="current-datetime"></div>
+            </div>
             <div class="head">
                 <p>> cd ~/<span class="blinking">_</span></p>
             </div>
@@ -40,6 +41,7 @@
                         <li><a href="https://lobste.rs/">lobste.rs</a></li>
                         <li><a href="https://mankier.com/">mankier</a></li>
                         <li><a href="https://devdocs.io/">devdocs</a></li>
+                        <li><a href="https://mankier.com/">mk</a></li>
                     </div>
                 </div>
 
@@ -75,14 +77,14 @@
 
                 <div class="category">
                     <div class="links">
-                        <li class="title"></li>
+                        <li class="title">social</li>
                         <li><a href="https://x.com/">x</a></li>
                         <li><a href="https://mail.google.com/mail/u/0/#inbox/">mail</a></li>
                         <li><a href="http://web.telegram.org/">telegram</a></li>
                         <li><a href="https://discord.com/channels/981539676550750228/1237586485234892841/">discord</a></li>
                     </div>
+                </div>
 
-                    
                 <div class="category">
                     <div class="links">
                         <li class="title">work</li>
@@ -92,40 +94,37 @@
                         <li><a href="https://vim.rtorr.com/">vim</a></li>
                         <li><a href="https://github.com/">github</a></li>
                     </div>
-                  
-              
-                <div class="category">
-                    <div class="links">
-                        <li class="title">work</li>
-                        <li><a href="https://gmail.com">gmail</a></li>
-                        <li><a href="https://outlook.office.com">outlook</a></li>
-                        <li><a href="https://linkedin.com">linkedin</a></li>
-                        <li><a href="https://vim.rtorr.com/">vim</a></li>
-                        <li><a href="https://github.com/">github</a></li>
-                    </div>
-                </div>
-                </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Function to update the clock
-        function updateClock() {
+        // Function to update the clock and date
+        function updateDateTime() {
             const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
+
+            // Format time for 12-hour clock with AM/PM
+            let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timeString = `${hours}:${minutes}:${seconds}`;
-            document.getElementById('current-time').textContent = timeString;
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // The hour '0' should be '12'
+            const timeString = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+
+            // Format date
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('en-US', options);
+
+            document.getElementById('current-datetime').textContent = `${dateString} ${timeString}`;
         }
 
         // Update the clock every second
-        setInterval(updateClock, 1000);
+        setInterval(updateDateTime, 1000);
 
         // Initial call to display the time immediately
-        updateClock();
+        updateDateTime();
     </script>
 </body>
 
