@@ -1,6 +1,6 @@
 :root {
     --color-bg: #282828;
-    --color-fg: #EADBB2;
+    --color-fg: #EADBB2; /* Clock font color */
     --color-link: #8F9191;
     --color-link-visited: #668F8B;
     --color-link-hover: #FA7921 ;
@@ -56,6 +56,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   align-items: center; /* Center all children horizontally */
   justify-content: center;
   padding-right: 0px; /* Removed as items are centered */
+  /* Removed position: relative; as the button is now fixed to the viewport */
 }
 
 .datetime-container {
@@ -73,13 +74,19 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 .head {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center the cd ~/_ text */
+  display: flex; /* Use flexbox to keep elements inline */
+  flex-direction: row; /* Arrange items in a row */
+  align-items: center; /* Vertically align items in the center */
   font-size: 32px;
   padding-top: 0px;
   margin-top: 0px;
-  white-space: nowrap;
+  white-space: nowrap; /* Keep content on a single line */
+}
+
+/* Ensure prompt prefix and search text are inline elements */
+#prompt-prefix, #search-text, #blinker {
+    display: inline-block;
+    vertical-align: middle; /* Align them nicely */
 }
 
 .bookmarks {
@@ -163,4 +170,37 @@ a:hover {
   100% {
     opacity: 1;
   }
+}
+
+/* Styles for the new link buttons */
+.top-right-link-button {
+    position: fixed; /* Position relative to the viewport */
+    top: 15px; /* Distance from the top */
+    width: 10px; /* Smaller size */
+    height: 10px; /* Smaller size */
+    border-radius: 50%; /* Makes it round */
+    background-color: #C0B090; /* Dimmer version of --color-fg (#EADBB2) */
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it's on top of everything */
+    display: block; /* Make it a block element to apply width/height */
+    text-decoration: none; /* Remove underline for the link */
+}
+
+.top-right-link-button:hover {
+    background-color: #A89878; /* Slightly darker on hover for the new color */
+}
+
+/* Specific positioning for each button */
+.button-1 {
+    right: 15px; /* Original button position */
+}
+
+.button-2 {
+    right: 35px; /* 15px (original) + 10px (button width) + 10px (spacing) */
+}
+
+.button-3 {
+    right: 55px; /* 35px (button 2) + 10px (button width) + 10px (spacing) */
 }
