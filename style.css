@@ -27,7 +27,8 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr minmax(300px, 450px) minmax(700px, 1fr) 1fr;
+  /* I've increased the min and max width of the second column to give the GIF more space. */
+  grid-template-columns: 1fr minmax(400px, 550px) minmax(700px, 1fr) 1fr;
   grid-template-areas:
     ". left right .";
   column-gap: 40px;
@@ -70,7 +71,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 
 .gif img {
   max-width: 100%;
+  max-height: 100%;
   height: auto;
+  width: auto;
 }
 
 .head {
