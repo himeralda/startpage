@@ -9,26 +9,26 @@
 html, body {
   background: var(--color-bg);
   color: var(--color-fg);
-  font-family: "Fira Code";
+  font-family: "Fira Code", monospace; /* Added monospace for better code-like feel */
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: auto; /* Allow horizontal scrolling */
-  /* Hide scrollbar for Chrome, Safari and Opera */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: auto; /* Allow vertical scrolling */
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-html::-webkit-scrollbar, body::-webkit-scrollbar {
+html::-webkit-scrollbar {
   display: none;
 }
 
 .container {
   display: grid;
-  /* I've increased the min and max width of the second column to give the GIF more space. */
-  grid-template-columns: 1fr minmax(400px, 550px) minmax(700px, 1fr) 1fr;
+  /* Increased min and max width for the left column to make the GIF larger */
+  grid-template-columns: 1fr minmax(450px, 600px) minmax(700px, 1fr) 1fr;
   grid-template-areas:
     ". left right .";
   column-gap: 40px;
@@ -57,11 +57,10 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   align-items: center; /* Center all children horizontally */
   justify-content: center;
   padding-right: 0px; /* Removed as items are centered */
-  /* Removed position: relative; as the button is now fixed to the viewport */
 }
 
 .datetime-container {
-    font-size: 1.4em;
+    font-size: 1.47em; /* Increased from 1.4em */
     color: var(--color-fg);
     margin-bottom: 20px; /* Space between clock and cd ~/_ */
     text-align: center; /* Center text within its own container */
@@ -80,7 +79,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   display: flex; /* Use flexbox to keep elements inline */
   flex-direction: row; /* Arrange items in a row */
   align-items: center; /* Vertically align items in the center */
-  font-size: 32px;
+  font-size: 33.6px; /* Increased from 32px */
   padding-top: 0px;
   margin-top: 0px;
   white-space: nowrap; /* Keep content on a single line */
@@ -93,13 +92,12 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 .bookmarks {
-  display: flex;
+  display: grid; /* Changed to grid */
+  grid-template-columns: repeat(4, 1fr); /* 4 columns for 2 equal rows */
+  gap: 20px; /* Gap between categories */
   justify-content: center; /* Center categories horizontally */
   align-items: flex-start; /* Align category items to the top */
-  gap: 10px; /* Gap between categories */
-  white-space: nowrap;
   width: 100%;
-  overflow-x: auto; /* Allow horizontal scrolling for bookmarks if they overflow */
   box-sizing: border-box;
   margin-top: 40px; /* More space below cd ~/_ */
   /* Hide scrollbar for Chrome, Safari and Opera within bookmarks */
@@ -112,7 +110,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   display: none;
 }
 
-
 .category {
   display: flex;
   flex-direction: column;
@@ -121,6 +118,12 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   max-width: 160px; /* Adjusted maximum width for categories */
   text-align: center;
   box-sizing: border-box;
+  padding: 10px; /* Added padding */
+  border: 1px solid rgba(234, 219, 178, 0.2); /* Subtle border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow */
+  background-color: rgba(40, 40, 40, 0.8); /* Slightly transparent background */
+  position: relative; /* Needed for positioning the button */
 }
 
 .links {
@@ -133,12 +136,12 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 .title {
-  font-size: 20px;
+  font-size: 21px; /* Increased from 20px */
   margin-bottom: 5px;
 }
 
 li {
-  font-size: 16px;
+  font-size: 16.8px; /* Increased from 16px */
   list-style-type: none;
   padding: 3px;
 }
@@ -146,6 +149,7 @@ li {
 a:link {
   text-decoration: none;
   color: var(--color-link);
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 a:visited {
@@ -154,6 +158,7 @@ a:visited {
 
 a:hover {
   color: var(--color-link-hover);
+  text-shadow: 0 0 5px var(--color-link-hover); /* Subtle glow on hover */
 }
 
 .blinking {
@@ -206,4 +211,52 @@ a:hover {
 
 .button-3 {
     right: 55px; /* 35px (button 2) + 10px (button width) + 10px (spacing) */
+}
+
+/* Styles for the toggle links button */
+.toggle-links-button {
+    background: none;
+    border: none;
+    color: var(--color-link-hover); /* Use hover color for visibility */
+    font-size: 1.5em; /* Make it noticeable */
+    cursor: pointer;
+    margin-top: 10px; /* Space from the last visible link */
+    padding: 0;
+    line-height: 1; /* Prevent extra space */
+    transition: color 0.3s ease;
+}
+
+.toggle-links-button:hover {
+    color: var(--color-fg); /* Brighter on hover */
+}
+
+/* Responsive adjustments for the bookmarks grid */
+@media (max-width: 992px) { /* Adjusted breakpoint for 3 columns */
+  .bookmarks {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .bookmarks {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    gap: 15px;
+  }
+  .category {
+    padding: 8px;
+  }
+  .title {
+    font-size: 1.365em; /* Increased from 1.3em */
+  }
+  li {
+    font-size: 0.945em; /* Increased from 0.9em */
+    padding: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bookmarks {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+    gap: 10px;
+  }
 }
