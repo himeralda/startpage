@@ -50,7 +50,7 @@ html::-webkit-scrollbar {
 
 .right-container {
   grid-area: right;
-  height: 50%;
+  height: 50%; /* This height might need adjustment if content goes off-screen */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -73,6 +73,8 @@ html::-webkit-scrollbar {
   max-height: 100%;
   height: auto;
   width: auto;
+  /* Reduced margin-top to move the GIF upwards */
+  margin-top: 50px; /* Adjust this value to align perfectly */
 }
 
 .head {
