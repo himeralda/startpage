@@ -1,9 +1,9 @@
 :root {
-    --color-bg: #282828;
-    --color-fg: #EADBB2; /* Clock font color */
-    --color-link: #8F9191;
-    --color-link-visited: #668F8B;
-    --color-link-hover: #FA7921 ;
+    --color-bg: #282828; /* Gruvbox dark hard background */
+    --color-fg: #ebdbb2; /* Gruvbox foreground */
+    --color-link: #83a598; /* Gruvbox aqua */
+    --color-link-visited: #d3869b; /* Gruvbox purple */
+    --color-link-hover: #fe8019; /* Gruvbox orange */
 }
 
 html, body {
@@ -119,10 +119,10 @@ html::-webkit-scrollbar {
   text-align: center;
   box-sizing: border-box;
   padding: 10px; /* Added padding */
-  border: 1px solid rgba(234, 219, 178, 0.2); /* Subtle border */
+  border: 1px solid rgba(235, 219, 178, 0.2); /* Subtle border using Gruvbox fg with transparency */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow */
-  background-color: rgba(40, 40, 40, 0.8); /* Slightly transparent background */
+  background-color: rgba(40, 40, 40, 0.8); /* Slightly transparent Gruvbox dark hard background */
   position: relative; /* Needed for positioning the button */
 }
 
@@ -187,7 +187,7 @@ a:hover {
     width: 10px; /* Smaller size */
     height: 10px; /* Smaller size */
     border-radius: 50%; /* Makes it round */
-    background-color: #C0B090; /* Dimmer version of --color-fg (#EADBB2) */
+    background-color: #a89984; /* Gruvbox grey background 20% dimmer */
     border: none;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -197,7 +197,7 @@ a:hover {
 }
 
 .top-right-link-button:hover {
-    background-color: #A89878; /* Slightly darker on hover for the new color */
+    background-color: #928374; /* Slightly darker on hover for the new color */
 }
 
 /* Specific positioning for each button */
