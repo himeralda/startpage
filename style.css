@@ -51,7 +51,7 @@ html::-webkit-scrollbar {
 
 .right-container {
   grid-area: right;
-  height: 50%; /* This height might need adjustment if content goes off-screen */
+  min-height: 50%; /* Changed from height: 50% to min-height to allow content to expand */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -103,6 +103,8 @@ html::-webkit-scrollbar {
   width: 100%;
   box-sizing: border-box;
   margin-top: 40px; /* More space below cd ~/_ */
+  overflow-y: auto; /* Allow scrolling within the bookmarks section if content overflows */
+  max-height: calc(100vh - 250px); /* Adjust max-height based on other elements' heights */
   /* Hide scrollbar for Chrome, Safari and Opera within bookmarks */
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
@@ -432,4 +434,40 @@ h2 {
     width: fit-content;
     margin-top: 20px;
     align-self: center; /* Center these buttons */
+}
+
+/* Custom Confirmation Dialog */
+.custom-confirm {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-link-hover);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    z-index: 1002; /* Above the modal */
+    text-align: center;
+}
+
+.custom-confirm p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.custom-confirm button {
+    background-color: var(--color-link);
+    color: var(--color-bg);
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Fira Code", monospace;
+    transition: background-color 0.3s ease;
+}
+
+.custom-confirm button:hover {
+    background-color: var(--color-link-hover);
 }
