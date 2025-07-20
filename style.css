@@ -145,7 +145,7 @@ html::-webkit-scrollbar {
 }
 
 li {
-  font-size: 18px; /* Increased for better readability */
+  font-size: 17px; /* Increased for better readability */
   list-style-type: none;
   padding: 3px;
 }
