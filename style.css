@@ -75,7 +75,7 @@ html::-webkit-scrollbar {
   max-height: 100%;
   height: auto;
   width: auto;
-  margin-top: 100px; /* Adjusted to pull the image further down */
+  margin-top: 80px; /* Adjusted to pull the image slightly up from 100px */
 }
 
 .head {
