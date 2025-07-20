@@ -61,7 +61,7 @@ html::-webkit-scrollbar {
 }
 
 .datetime-container {
-    font-size: 1.4em; /* Reverted to original value */
+    font-size: 1.47em; /* Increased slightly for better visibility */
     color: var(--color-fg);
     margin-bottom: 20px; /* Space between clock and cd ~/_ */
     text-align: center; /* Center text within its own container */
@@ -74,16 +74,16 @@ html::-webkit-scrollbar {
   max-height: 100%;
   height: auto;
   width: auto;
-  margin-top: 60px; /* Reverted to original value */
+  margin-top: 50px; /* Adjusted to bring it slightly up for better balance */
 }
 
 .head {
   display: flex; /* Use flexbox to keep elements inline */
   flex-direction: row; /* Arrange items in a row */
   align-items: center; /* Vertically align items in the center */
-  font-size: 32px; /* Reverted to original value */
+  font-size: 32px;
   padding-top: 0px;
-  margin-top: 0px;
+  margin-top: 20px; /* Added margin-top to push it down */
   white-space: nowrap; /* Keep content on a single line */
 }
 
@@ -139,12 +139,12 @@ html::-webkit-scrollbar {
 }
 
 .title {
-  font-size: 20px; /* Reverted to original value */
+  font-size: 20px;
   margin-bottom: 5px;
 }
 
 li {
-  font-size: 16px; /* Reverted to original value */
+  font-size: 16.8px; /* Increased slightly for better readability */
   list-style-type: none;
   padding: 3px;
 }
@@ -271,10 +271,10 @@ a:hover {
     padding: 8px;
   }
   .title {
-    font-size: 1.3em; /* Reverted to original value */
+    font-size: 1.3em;
   }
   li {
-    font-size: 0.9em; /* Reverted to original value */
+    font-size: 0.945em; /* Adjusted for smaller screens to match new size */
     padding: 4px;
   }
 }
