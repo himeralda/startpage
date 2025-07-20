@@ -273,6 +273,7 @@
                 linksDiv.appendChild(titleLi);
 
                 // Create and store all original link elements, applying starred class if needed
+                // This map now directly creates the <li> elements with the correct <a> tags
                 categoryData.allOriginalLinks = categoryData.links.map(link => {
                     const li = document.createElement('li');
                     const a = document.createElement('a');
@@ -322,10 +323,24 @@
                     // Re-render links for this specific category
                     linksDiv.innerHTML = ''; // Clear existing links
                     linksDiv.appendChild(titleLi); // Re-add the title
+
                     const newStartIndex = categoryData.currentPage * linksPerPage;
                     const newEndIndex = newStartIndex + linksPerPage;
+
                     for (let i = newStartIndex; i < newEndIndex && i < categoryData.allOriginalLinks.length; i++) {
-                        linksDiv.appendChild(categoryData.allOriginalLinks[i]);
+                        const currentLi = categoryData.allOriginalLinks[i];
+                        const currentLinkData = categoryData.links[i]; // Get the actual data object
+
+                        // Ensure the 'starred-link' class is correctly applied/removed
+                        const aElement = currentLi.querySelector('a');
+                        if (aElement) {
+                            if (currentLinkData.starred) {
+                                aElement.classList.add('starred-link');
+                            } else {
+                                aElement.classList.remove('starred-link');
+                            }
+                        }
+                        linksDiv.appendChild(currentLi);
                     }
                 });
             });
