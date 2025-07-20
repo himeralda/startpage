@@ -158,7 +158,7 @@ a:link {
 }
 
 a.starred-link { /* New style for starred links */
-    color: var(--color-red);
+    color: var(--color-red) !important; /* Added !important for a hard fix */
 }
 
 a:visited {
@@ -488,7 +488,7 @@ h2 {
 }
 
 .star-button.is-starred {
-    color: var(--color-red); /* Gruvbox red for starred */
+    color: var(--color-red) !important; /* Gruvbox red for starred */
 }
 
 .star-button:hover {
