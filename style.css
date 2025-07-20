@@ -63,6 +63,7 @@ html::-webkit-scrollbar {
 .datetime-container {
     font-size: 1.47em; /* Increased slightly for better visibility */
     color: var(--color-fg);
+    margin-top: 20px; /* Added margin-top to push it down */
     margin-bottom: 20px; /* Space between clock and cd ~/_ */
     text-align: center; /* Center text within its own container */
     width: 100%; /* Take full width to allow centering */
@@ -74,7 +75,7 @@ html::-webkit-scrollbar {
   max-height: 100%;
   height: auto;
   width: auto;
-  margin-top: 50px; /* Adjusted to bring it slightly up for better balance */
+  margin-top: 40px; /* Adjusted to balance the layout */
 }
 
 .head {
@@ -83,7 +84,7 @@ html::-webkit-scrollbar {
   align-items: center; /* Vertically align items in the center */
   font-size: 32px;
   padding-top: 0px;
-  margin-top: 20px; /* Added margin-top to push it down */
+  margin-top: 10px; /* Adjusted margin-top to maintain spacing */
   white-space: nowrap; /* Keep content on a single line */
 }
 
@@ -144,7 +145,7 @@ html::-webkit-scrollbar {
 }
 
 li {
-  font-size: 16.8px; /* Increased slightly for better readability */
+  font-size: 18px; /* Increased for better readability */
   list-style-type: none;
   padding: 3px;
 }
@@ -274,7 +275,7 @@ a:hover {
     font-size: 1.3em;
   }
   li {
-    font-size: 0.945em; /* Adjusted for smaller screens to match new size */
+    font-size: 1.05em; /* Adjusted for smaller screens to match new size */
     padding: 4px;
   }
 }
