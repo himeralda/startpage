@@ -297,7 +297,8 @@
                 bookmarksContainer.appendChild(categoryDiv);
 
                 // Initial display of links for each category
-                displayCurrentPage(categoryData);
+                // Pass both the category data and the DOM element
+                displayCurrentPage(categoryData, categoryDiv);
 
                 // Add click listener to the toggle button
                 toggleButton.addEventListener('click', () => {
@@ -306,15 +307,17 @@
                     if (categoryData.currentPage * linksPerPage >= categoryData.allOriginalLinks.length) {
                         categoryData.currentPage = 0;
                     }
-                    displayCurrentPage(categoryData); // Update the displayed links
+                    // Pass both the category data and the DOM element
+                    displayCurrentPage(categoryData, categoryDiv);
                 });
             });
         }
 
         // Function to display the links for the current page (for a specific category)
-        function displayCurrentPage(currentCategory) {
-            const allLinks = currentCategory.allOriginalLinks;
-            const currentPage = currentCategory.currentPage;
+        // Now accepts the DOM element of the category as a second argument
+        function displayCurrentPage(currentCategoryData, currentCategoryDomElement) {
+            const allLinks = currentCategoryData.allOriginalLinks;
+            const currentPage = currentCategoryData.currentPage;
             const startIndex = currentPage * linksPerPage;
             const endIndex = startIndex + linksPerPage;
 
@@ -327,7 +330,8 @@
             }
 
             // Update button visibility based on number of pages
-            const toggleButton = currentCategory.querySelector('.toggle-links-button');
+            // Use currentCategoryDomElement to find the toggle button
+            const toggleButton = currentCategoryDomElement.querySelector('.toggle-links-button');
             if (allLinks.length <= linksPerPage) {
                 toggleButton.style.display = 'none'; // Hide button if no pagination needed
             } else {
