@@ -75,7 +75,7 @@ html::-webkit-scrollbar {
   max-height: 100%;
   height: auto;
   width: auto;
-  margin-top: 40px; /* Adjusted to balance the layout */
+  margin-top: 50px; /* Adjusted to balance the layout */
 }
 
 .head {
