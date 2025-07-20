@@ -33,7 +33,7 @@ html::-webkit-scrollbar {
     ". left right .";
   column-gap: 40px;
   justify-items: center;
-  align-items: center;
+  align-items: flex-start; /* Changed to flex-start to allow content to push down */
   min-height: 100%;
   width: 100%;
 }
@@ -51,17 +51,17 @@ html::-webkit-scrollbar {
 
 .right-container {
   grid-area: right;
-  min-height: 50%;
+  height: auto; /* Changed to auto to allow it to grow with content */
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center; /* Center all children horizontally */
-  justify-content: center;
+  justify-content: flex-start; /* Changed to flex-start to align content to the top */
   padding-right: 0px; /* Removed as items are centered */
 }
 
 .datetime-container {
-    font-size: 1.4em;
+    font-size: 1.4em; /* Reverted to original value */
     color: var(--color-fg);
     margin-bottom: 20px; /* Space between clock and cd ~/_ */
     text-align: center; /* Center text within its own container */
@@ -74,14 +74,14 @@ html::-webkit-scrollbar {
   max-height: 100%;
   height: auto;
   width: auto;
-  margin-top: 60px; /* Adjust this value to align perfectly */
+  margin-top: 60px; /* Reverted to original value */
 }
 
 .head {
   display: flex; /* Use flexbox to keep elements inline */
   flex-direction: row; /* Arrange items in a row */
   align-items: center; /* Vertically align items in the center */
-  font-size: 32px;
+  font-size: 32px; /* Reverted to original value */
   padding-top: 0px;
   margin-top: 0px;
   white-space: nowrap; /* Keep content on a single line */
@@ -102,6 +102,15 @@ html::-webkit-scrollbar {
   width: 100%;
   box-sizing: border-box;
   margin-top: 40px; /* More space below cd ~/_ */
+  /* Removed overflow-y and max-height to prevent internal scrolling */
+  /* Hide scrollbar for Chrome, Safari and Opera within bookmarks */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera within bookmarks */
+.bookmarks::-webkit-scrollbar {
+  display: none;
 }
 
 .category {
@@ -130,12 +139,12 @@ html::-webkit-scrollbar {
 }
 
 .title {
-  font-size: 20px;
+  font-size: 20px; /* Reverted to original value */
   margin-bottom: 5px;
 }
 
 li {
-  font-size: 16px;
+  font-size: 16px; /* Reverted to original value */
   list-style-type: none;
   padding: 3px;
 }
@@ -262,10 +271,10 @@ a:hover {
     padding: 8px;
   }
   .title {
-    font-size: 1.3em;
+    font-size: 1.3em; /* Reverted to original value */
   }
   li {
-    font-size: 0.9em;
+    font-size: 0.9em; /* Reverted to original value */
     padding: 4px;
   }
 }
