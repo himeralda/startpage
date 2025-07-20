@@ -105,9 +105,9 @@
                             if (!urlToOpen.startsWith('http://') && !urlToOpen.startsWith('https://')) {
                                 urlToOpen = `http://${urlToOpen}`;
                             }
-                            window.location.href = urlToOpen;
+                            window.open(urlToOpen, '_blank');
                         } else {
-                            window.location.href = `https://www.duckduckgo.com/search?q=${encodeURIComponent(trimmedQuery)}`;
+                            window.open(`https://www.duckduckgo.com/search?q=${encodeURIComponent(trimmedQuery)}`, '_blank');
                         }
                     }
                     searchQuery = '';
