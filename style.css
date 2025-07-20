@@ -157,7 +157,7 @@ a:link {
 }
 
 a:visited {
-  color: var(--color-link-visited);
+  color: var(--color-link); /* Changed to use the same color as a:link */
 }
 
 a:hover {
